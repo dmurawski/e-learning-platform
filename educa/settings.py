@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # local app
+    "courses.apps.CoursesConfig",
+    #
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3-rd party apps
     # local apps
-    "courses.apps.CoursesConfig",
 ]
 
 MIDDLEWARE = [
