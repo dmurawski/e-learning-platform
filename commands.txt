@@ -1,0 +1,11 @@
+isort . -sortowanie importów
+
+
+python manage.py dumpdata courses --indent=2 --output=courses/fixtures/subjects.json
+tworzenie fixtures
+
+wczytwanie fixtures
+python manage.py loaddata subjects.json
+
+django defaultowo szuka w fixtures/ 
+ale mozna zmienic za pomoca FIXTURE_DIRS
