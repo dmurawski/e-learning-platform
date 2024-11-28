@@ -31,10 +31,10 @@ class OwnerCourseMixin(
 
 
 class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
-    templete_name = "course/manage/course/form.html"
+    template_name = "courses/manage/course/form.html"
 
 
-class MangeCourseListView(OwnerCourseMixin, ListView):
+class ManageCourseListView(OwnerCourseMixin, ListView):
     template_name = "courses/manage/course/list.html"
     permission_required = "courses.view_course"
 
