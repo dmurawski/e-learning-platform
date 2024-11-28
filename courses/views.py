@@ -57,7 +57,7 @@ class CourseDeleteView(OwnerCourseMixin, DeleteView):
 
 
 class CourseModuleUpdateView(TemplateResponseMixin, View):
-    template_engine = "courses/manage/module/formset.html"
+    template_name = "courses/manage/module/formset.html"
     course = None
 
     def get_formset(self, data=None):
