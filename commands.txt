@@ -1,5 +1,5 @@
 isort . -sortowanie importów
-
+djhtml --tabwidth 2 . -foramtuje templatki
 
 python manage.py dumpdata courses --indent=2 --output=courses/fixtures/subjects.json
 tworzenie fixtures
@@ -9,3 +9,8 @@ python manage.py loaddata subjects.json
 
 django defaultowo szuka w fixtures/ 
 ale mozna zmienic za pomoca FIXTURE_DIRS
+
+537-567
+
+
+
