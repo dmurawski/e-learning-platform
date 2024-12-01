@@ -197,7 +197,7 @@ class CourseListView(TemplateResponseMixin, View):
         subjects = cache.get("all_subjects")
 
         if not subjects:
-            courses = Course.objects.annotate(total_courses=Count("courses"))
+            subjects = Subject.objects.annotate(total_courses=Count("courses"))
             cache.set("all_subjects", subjects)
         all_courses = Course.objects.annotate(total_modules=Count("modules"))
 
