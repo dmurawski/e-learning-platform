@@ -43,11 +43,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3-rd party apps
     "embed_video",
+    "debug_toolbar",
     # local apps
     "students.apps.StudentsConfig",
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -135,3 +137,17 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = reverse_lazy("student_course_list")
+
+# django debug toolbar
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+
+# cache
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+        "LOCATION": "127.0.0.1:11211",
+    }
+}
