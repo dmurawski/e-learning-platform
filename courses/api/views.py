@@ -1,6 +1,6 @@
 from rest_framework import generics
 from courses.api.serializers import SubjectSerializer
-from courses.models import Subject
+from courses.models import Subject, Course
 from django.db.models import Count
 from courses.api.pagination import StandardPagination
 
