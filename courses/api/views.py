@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import action
 
 # class SubjectListView(generics.ListAPIView):
 #     queryset = Subject.objects.annotate(total_courses=Count("courses"))
@@ -31,12 +32,23 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CourseSerializer
     pagination_class = StandardPagination
 
-
-class CourseEnrollView(APIView):
-    authentication_classes = [BaseAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    def post(self, pk, request, format=None):
-        course = get_object_or_404(Course, pk=pk)
+    @action(
+        detail=True,
+        methods=["post"],
+        authentication_classes=[BaseAuthentication],
+        permissions_classes=[IsAuthenticated],
+    )
+    def enroll(self, request, *args, **kwargs):
+        course = self.get_object()
         course.students.add(request.user)
         return Response({"enrolled": True})
+
+
+# class CourseEnrollView(APIView):
+#     authentication_classes = [BaseAuthentication]
+#     permission_classes = [IsAuthenticated]
+
+#     def post(self, pk, request, format=None):
+#         course = get_object_or_404(Course, pk=pk)
+#         course.students.add(request.user)
+#         return Response({"enrolled": True})
