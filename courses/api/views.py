@@ -1,4 +1,3 @@
-from rest_framework import generics
 from rest_framework import viewsets
 from courses.api.serializers import SubjectSerializer, CourseSerializer
 from courses.models import Subject, Course
@@ -7,6 +6,7 @@ from courses.api.pagination import StandardPagination
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.authentication import BaseAuthentication
 
 # class SubjectListView(generics.ListAPIView):
 #     queryset = Subject.objects.annotate(total_courses=Count("courses"))
@@ -32,6 +32,8 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class CourseEnrollView(APIView):
+    authentication_classes = [BaseAuthentication]
+
     def post(self, pk, request, format=None):
         course = get_object_or_404(Course, pk=pk)
         course.students.add(request.user)
