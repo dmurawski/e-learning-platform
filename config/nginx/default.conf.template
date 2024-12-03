@@ -1,5 +1,4 @@
 # upstream for uWSGI
-
 upstream uwsgi_app {
     server unix:/code/uwsgi_app.sock;
 }
@@ -10,22 +9,22 @@ upstream daphne {
 }
 
 server {
-    listen 80;
+    listen       80;
     server_name *.educaproject.com educaproject.com;
     return 301 https://$host$request_uri;
 }
-server {
-    listen 443 ssl;
-    ssl_certificate /code/ssl/educa.crt;
-    ssl_certificate_key /code/ssl/educa.key;
-    server_name *.educaproject.com educaproject.com;
 
-    error_log stderr warn;
-    access_log /dev/stdout main;
-    
+server {
+    listen       443 ssl;
+    ssl_certificate      /code/ssl/educa.crt;
+    ssl_certificate_key  /code/ssl/educa.key;
+    server_name  *.educaproject.com educaproject.com;
+    error_log    stderr warn;
+    access_log   /dev/stdout main;
+
     location / {
-        include /etc/nginx/uwsgi_params;
-        uwsgi_pass uwsgi_app;
+        include      /etc/nginx/uwsgi_params;
+        uwsgi_pass   uwsgi_app;
     }
 
     location /ws/ {
