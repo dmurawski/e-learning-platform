@@ -13,7 +13,7 @@ class Message(models.Model):
         on_delete=models.PROTECT,
         related_name="chat_messages",
     )
-    context = models.TextField()
+    content = models.TextField()
     sent_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
