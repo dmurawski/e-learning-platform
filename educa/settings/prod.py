@@ -13,9 +13,9 @@ ALLOWED_HOSTS = ["educaproject.com", "www.educaproject.com"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("POSTGRES_DB"),
-        "USER": config("POSTGRES_USER"),
-        "PASSWORD": config("POSTGRES_PASSWORD"),
+        "NAME": config("POSTGRES_DB", default="postgres"),
+        "USER": config("POSTGRES_USER", default="postgres"),
+        "PASSWORD": config("POSTGRES_PASSWORD", default="postgres"),
         "HOST": "db",
         "PORT": 5432,
     }
