@@ -16,3 +16,7 @@ ale mozna zmienic za pomoca FIXTURE_DIRS
 
 odpytwanie api za pomoca curl
 curl http://127.0.0.1:8000/api/subjects/
+
+
+odpalanie lokalnego servera:
+python manage.py runserver --settings=educa.settings.local
