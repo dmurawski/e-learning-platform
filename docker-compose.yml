@@ -19,8 +19,8 @@ services:
   web:
     build: .
     command: ["./wait-for-it.sh", "db:5432", "--",
-              "python", "manage.py", "runserver",
-              "0.0.0.0:8000"]
+              "uwsgi", "--ini", "runserver",
+              "/config/uwsgi/uwsgi.ini"]
 
     restart: always
     volumes:
