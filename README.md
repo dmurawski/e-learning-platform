@@ -74,4 +74,34 @@ Projekt jest zkonteneryzowany i wykorzystuje:
   - POST ```/courses/<id>/enroll/``` - Lista kursów.
   - GET ```/courses/<id>/contents/``` - Pobranie zawartości kursu (wymaga uwierzytelnienia oraz zapisu na kurs).
 #### DJANGO APP
+##### Course app ```/course/```
+- ```mine/``` - Wyświetla listę kursów użytkownika.
+- ```create/``` - Tworzenie nowego kursu.
+- ```<id_kurs>/edit/``` - Edycja kursu o podanym pk.
+- ```<id_kurs>/delete/``` - Usunięcie kursu o podanym pk.
+- ```<id_kurs>/module/``` - Edycja modułów kursu o podanym pk.
+- ```content/<id>/delete/``` - Usunięcie treści o podanym id.
+- ```module/<module_id>/``` - Wyświetla treści modułu.
+- ```subject/<slug:subject>/``` - Lista kursów dla danego tematu.
+- ```<slug:slug>/``` - Szczegóły kursu o podanym slug.
+ ``` model_name = ["text","video","image","file"]```
+- ```module/<module_id>/content/<model_name>/create/``` - Tworzenie treści w module.
+- ```module/<module_id>/content/<model_name>/<id>/``` - Edycja treści w module.
+##### Students app
+- ```register/``` - Rejestracja studenta.
+- ```enroll-course/``` - Zapis na kurs.
+- ```courses/``` - Lista kursów studenta.
+- ```/students/course/<pk>/<module_id>/``` - Szczegóły modułu kursu.
+- ```/students/course/<pk>/``` - Szczegóły kursu.
+##### Chat app
+- ```chat/room/<id_kursu>/``` jesli jestes zapisany do kursu
+##### General app
+- ```/accounts/login/``` - logowanie
+- ```/accounts/logout/``` - wylogowywanie
+- ```/admin/``` - Panel administracyjny 
 
+### Przykład wygladu aplikacji
+Główny wygląd
+![Główny wygląd](images/Educa1.jpg)
+Czat
+![Czat](images/Educa-chat.jpg)
